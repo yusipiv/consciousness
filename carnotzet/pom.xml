@@ -10,6 +10,21 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>carnotzet</artifactId>
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.swissquote</groupId>
+				<artifactId>zet-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>rabbitmq-carnotzet</module>
+	</modules>
+
+	
 
 
 </project>
