@@ -12,14 +12,28 @@
 	<artifactId>carnotzet</artifactId>
 	<packaging>pom</packaging>
 
+	<properties>
+		<carnotzet.version>1.7.9</carnotzet.version>
+		<rabbitmq.version>3.7.13</rabbitmq.version>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.github.swissquote</groupId>
 				<artifactId>zet-maven-plugin</artifactId>
+				<version>${carnotzet.version}</version>
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.consciousness.me</groupId>
+			<artifactId>ra</artifactId>
+		</dependency>
+	</dependencies>
+
 	<modules>
 		<module>rabbitmq-carnotzet</module>
 	</modules>
