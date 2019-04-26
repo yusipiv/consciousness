@@ -9,36 +9,17 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>carnotzet</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>rabbitmq-carnotzet</artifactId>
 
-	<properties>
-		<carnotzet.version>1.7.9</carnotzet.version>
-		<rabbitmq.version>3.7.13</rabbitmq.version>
-	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.github.swissquote</groupId>
 				<artifactId>zet-maven-plugin</artifactId>
-				<version>${carnotzet.version}</version>
+				<version>1.7.9</version>
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.consciousness.me</groupId>
-			<artifactId>ra</artifactId>
-		</dependency>
-	</dependencies>
-
-	<modules>
-		<module>rabbitmq-carnotzet</module>
-	</modules>
-
 	
-
-
 </project>
