@@ -11,6 +11,7 @@
 
 	<properties>
 		<zet-maven-plugin.version>1.7.9</zet-maven-plugin.version>
+		<dockerfile-maven-plugin.version>1.2.0</dockerfile-maven-plugin.version>
 	</properties>
 
 	<build>
@@ -38,6 +39,11 @@
 					<artifactId>zet-maven-plugin</artifactId>
 					<version>${zet-maven-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>dockerfile-maven-plugin</artifactId>
+					<version>${dockerfile-maven-plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -45,6 +51,7 @@
 
 	<modules>
 		<module>rabbitmq-carnotzet</module>
+		<module>app</module>
 	</modules>
 
 </project>
