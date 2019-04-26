@@ -10,14 +10,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>rabbitmq-carnotzet</artifactId>
+	<version>${rabbitmq.version}</version>
 
+	<properties>
+		<rabbitmq.version>3.7.14</rabbitmq.version>
+	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.github.swissquote</groupId>
 				<artifactId>zet-maven-plugin</artifactId>
-				<version>1.7.9</version>
 			</plugin>
 		</plugins>
 	</build>

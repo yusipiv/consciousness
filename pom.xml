@@ -9,6 +9,10 @@
 	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 
+	<properties>
+		<zet-maven-plugin.version>1.7.9</zet-maven-plugin.version>
+	</properties>
+
 	<build>
 		<resources>
 			<resource>
@@ -27,14 +31,18 @@
 			</resource>
 		</resources>
 
-		<plugins>
-			<plugin>
-				<groupId>com.github.swissquote</groupId>
-				<artifactId>zet-maven-plugin</artifactId>
-				<version>1.1.0</version>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.github.swissquote</groupId>
+					<artifactId>zet-maven-plugin</artifactId>
+					<version>${zet-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+
+
 	<modules>
 		<module>rabbitmq-carnotzet</module>
 	</modules>
