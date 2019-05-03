@@ -9,12 +9,12 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>rabbitmq-carnotzet</artifactId>
-	<version>${rabbitmq.version}</version>
-
 	<properties>
 		<rabbitmq.version>3.7.14</rabbitmq.version>
 	</properties>
+
+	<artifactId>rabbitmq-carnotzet</artifactId>
+	<version>${rabbitmq.version}</version>
 
 	<build>
 		<plugins>
@@ -24,5 +24,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
