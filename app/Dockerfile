@@ -1,5 +1,7 @@
-FROM openjdk:8u181
+FROM openjdk:8-jdk-alpine
 
-ADD target/app*.jar /opt/application.jar
+VOLUME /tmp
 
-ENTRYPOINT ["java","-jar","/opt/application.jar"]
+COPY target/*.jar app.jar
+
+ENTRYPOINT ["java","-jar","/app.jar"]

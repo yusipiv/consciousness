@@ -7,7 +7,7 @@
 	<groupId>com.consciousness.me</groupId>
 	<artifactId>root</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
 		<zet-maven-plugin.version>1.7.9</zet-maven-plugin.version>
@@ -47,7 +47,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 
 	<modules>
 		<module>rabbitmq-carnotzet</module>
