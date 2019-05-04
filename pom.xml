@@ -51,6 +51,7 @@
 	<modules>
 		<module>rabbitmq-carnotzet</module>
 		<module>app</module>
+		<module>reuters-api</module>
 	</modules>
 
 </project>
