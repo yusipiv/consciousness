@@ -55,7 +55,8 @@
 		<module>sales-generator</module>
 		<module>privat-api-carnotzet</module>
 		<module>api</module>
-		<module>oracle-carnotzet</module>
+		<module>db-carnotzet</module>
+		<module>history-carnotzet</module>
 	</modules>
 
 </project>

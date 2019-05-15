@@ -9,12 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<oracle.version>11.2.0.2-xe</oracle.version>
-	</properties>
-
-	<artifactId>oracle-carnotzet</artifactId>
-	<version>${oracle.version}</version>
+	<artifactId>db-carnotzet</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
 		<plugins>
