@@ -54,6 +54,7 @@
 		<module>reuters-api</module>
 		<module>sales-generator</module>
 		<module>privat-api-carnotzet</module>
+		<module>api</module>
 	</modules>
 
 </project>

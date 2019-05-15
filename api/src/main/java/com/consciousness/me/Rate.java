@@ -1,4 +1,4 @@
-package main.java.requester;
+package com.consciousness.me;
 
 import java.math.BigDecimal;
 

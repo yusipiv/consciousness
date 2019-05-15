@@ -1,4 +1,4 @@
-package main.java;
+package app.queue;
 
 import java.time.Duration;
 

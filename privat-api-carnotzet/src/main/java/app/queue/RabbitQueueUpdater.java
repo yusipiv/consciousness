@@ -1,15 +1,19 @@
-package main.java;
+package app.queue;
 
 import java.time.Duration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import main.java.requester.RatesRequester;
+import app.requester.RatesRequester;
 
 @Component
 public class RabbitQueueUpdater {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(RabbitQueueUpdater.class);
 
 	private final String topicName;
 	private final String routingKey;
@@ -24,10 +28,12 @@ public class RabbitQueueUpdater {
 		this.ratesRequester = ratesRequester;
 	}
 
-	public void subscribeAndPush(Duration duration) {
+	void subscribeAndPush(Duration duration) {
 		ratesRequester.getRates(duration)
-				.subscribe(data ->
-					rabbitTemplate.convertAndSend(topicName, routingKey, data)
+				.subscribe(data -> {
+					LOGGER.debug("send prices {}", data);
+					rabbitTemplate.convertAndSend(topicName, routingKey, data);
+				}
 		);
 	}
 }
