@@ -15,9 +15,15 @@ import app.GeneratorApplication;
 public class PriceConsumer {
 
 	private static final Logger logger = LoggerFactory.getLogger(PriceConsumer.class);
+	private final PricesGeneratorService pricesGeneratorService;
+
+	public PriceConsumer(PricesGeneratorService pricesGeneratorService) {
+		this.pricesGeneratorService = pricesGeneratorService;
+	}
 
 	@RabbitListener(queues = {GeneratorApplication.queueName})
-	public void receiveMessage(Rate message) {
-		logger.info("received rates: > {}", message);
+	public void receiveMessage(Rate rate) {
+		logger.info("received rates: ->> {}", rate);
+		pricesGeneratorService.updatePrices(rate);
 	}
 }
