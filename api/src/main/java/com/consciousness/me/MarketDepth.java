@@ -1,4 +1,4 @@
-package app.sales.consumers;
+package com.consciousness.me;
 
 import java.math.BigDecimal;
 

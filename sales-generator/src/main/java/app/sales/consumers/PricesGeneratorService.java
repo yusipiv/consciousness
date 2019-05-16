@@ -3,15 +3,19 @@ package app.sales.consumers;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import com.consciousness.me.PriceMovement;
 import com.consciousness.me.Rate;
 
 @Component
 public class PricesGeneratorService {
 
-	private final Map<String, Price> lastPrices = new ConcurrentHashMap<>();
+	private static final Logger LOGGER = LoggerFactory.getLogger(PricesGeneratorService.class);
+	private final Map<String, PriceMovement> lastPrices = new ConcurrentHashMap<>();
 
 	private final String separatorChar;
 	private final MarketDepthCalculator marketDepthCalculator;
@@ -22,8 +26,10 @@ public class PricesGeneratorService {
 		this.marketDepthCalculator = marketDepthCalculator;
 	}
 
-	public void updatePrices(Rate bankRates) {
-		lastPrices.compute(
-				String.join(separatorChar, bankRates.getBase(),bankRates.getTerm()), marketDepthCalculator);
+	public void updatePrices(Rate bankRate) {
+		lastPrices.compute(String.join(separatorChar, bankRate.getBase(),bankRate.getTerm()),
+				(instrument, oldValue) -> marketDepthCalculator.apply(instrument, bankRate, oldValue));
+
+		LOGGER.info("Last prices: {}", lastPrices);
 	}
 }
