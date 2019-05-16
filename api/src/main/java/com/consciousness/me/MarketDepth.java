@@ -12,9 +12,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class MarketDepth {
-	
 	private BigDecimal rate;
 	private BigDecimal growthAbsolute;
 	private BigDecimal growthPercent;
-
 }

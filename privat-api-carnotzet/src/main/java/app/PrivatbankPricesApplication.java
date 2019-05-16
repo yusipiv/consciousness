@@ -18,6 +18,10 @@ public class PrivatbankPricesApplication {
 
 	static final String queueName = "spring-boot";
 
+	public static void main(String[] args) {
+		SpringApplication.run(PrivatbankPricesApplication.class, args);
+	}
+
 	@Bean
 	public Queue queue() {
 		return new Queue(queueName, false);
@@ -36,9 +40,5 @@ public class PrivatbankPricesApplication {
 	@Bean
 	public MessageConverter jsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(PrivatbankPricesApplication.class, args);
 	}
 }

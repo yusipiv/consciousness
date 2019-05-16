@@ -31,9 +31,9 @@ public class RabbitQueueUpdater {
 	void subscribeAndPush(Duration duration) {
 		ratesRequester.getRates(duration)
 				.subscribe(data -> {
-					LOGGER.debug("send prices {}", data);
-					rabbitTemplate.convertAndSend(topicName, routingKey, data);
-				}
-		);
+							rabbitTemplate.convertAndSend(topicName, routingKey, data);
+							LOGGER.debug("sent prices {}", data);
+						}
+				);
 	}
 }

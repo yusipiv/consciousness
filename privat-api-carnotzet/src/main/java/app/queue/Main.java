@@ -17,7 +17,7 @@ public class Main {
 	private long seconds;
 
 	@PostConstruct
-	public void subscribe(){
+	public void subscribe() {
 		rabbitQueueUpdater.subscribeAndPush(Duration.ofSeconds(seconds));
 	}
 }

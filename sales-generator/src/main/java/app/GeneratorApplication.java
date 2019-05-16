@@ -19,6 +19,10 @@ public class GeneratorApplication {
 
 	public static final String queueName = "spring-boot";
 
+	public static void main(String[] args) {
+		SpringApplication.run(GeneratorApplication.class, args);
+	}
+
 	@Bean
 	public MessageConverter jsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
@@ -28,9 +32,5 @@ public class GeneratorApplication {
 	public MathContext mathContext(@Value("${rounding.precision}") int roundingPrecision,
 			@Value("${rounding.mode}") RoundingMode roundingMode) {
 		return new MathContext(roundingPrecision, roundingMode);
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(GeneratorApplication.class, args);
 	}
 }

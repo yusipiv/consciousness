@@ -50,7 +50,6 @@
 
 	<modules>
 		<module>rabbitmq-carnotzet</module>
-		<module>app</module>
 		<module>reuters-api</module>
 		<module>sales-generator</module>
 		<module>privat-api-carnotzet</module>

@@ -53,7 +53,7 @@ public class MarketDepthCalculator {
 	}
 
 	private BigDecimal calcPercentage(BigDecimal diff, BigDecimal prevValue) {
-		return diff.divide(prevValue,mathContext)
+		return diff.divide(prevValue, mathContext)
 				.divide(BigDecimal.valueOf(100), mathContext);
 	}
 }

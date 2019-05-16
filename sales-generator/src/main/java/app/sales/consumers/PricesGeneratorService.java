@@ -27,7 +27,7 @@ public class PricesGeneratorService {
 	}
 
 	public void updatePrices(Rate bankRate) {
-		lastPrices.compute(String.join(separatorChar, bankRate.getBase(),bankRate.getTerm()),
+		lastPrices.compute(String.join(separatorChar, bankRate.getBase(), bankRate.getTerm()),
 				(instrument, oldValue) -> marketDepthCalculator.apply(instrument, bankRate, oldValue));
 
 		LOGGER.info("Last prices: {}", lastPrices);
