@@ -1,4 +1,4 @@
-package app.sales.consumers;
+package app.prices;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

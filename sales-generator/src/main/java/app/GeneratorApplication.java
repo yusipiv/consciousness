@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 /*
  this application suppose to get last rates from rabbit queue and generate traded based on configuration
  then push trades to another queue
  */
 @SpringBootApplication
+@Import(OracleConfiguration.class)
 public class GeneratorApplication {
 
 	public static final String queueName = "spring-boot";

@@ -1,4 +1,4 @@
-package app.sales.consumers;
+package app.prices.impl;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -7,6 +7,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Component;
+
+import app.prices.MidValueCalculator;
 
 @Component
 public class MidValueCalculatorImpl implements MidValueCalculator {

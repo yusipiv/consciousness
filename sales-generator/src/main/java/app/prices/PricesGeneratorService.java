@@ -1,4 +1,4 @@
-package app.sales.consumers;
+package app.prices;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.consciousness.me.Rate;
 
 import app.GeneratorApplication;
+import app.prices.PricesGeneratorService;
 
 @EnableRabbit
 @Component
