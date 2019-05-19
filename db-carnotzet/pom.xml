@@ -18,6 +18,29 @@
 				<groupId>com.github.swissquote</groupId>
 				<artifactId>zet-maven-plugin</artifactId>
 			</plugin>
+			<!--<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<version>3.5.41</version>
+				<configuration>
+					<enricher>
+						<config>
+							<fmp-service>
+								<type>oracle-xe</type>
+							</fmp-service>
+						</config>
+					</enricher>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>resource</goal>
+							<goal>build</goal>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>-->
 		</plugins>
 	</build>
 
