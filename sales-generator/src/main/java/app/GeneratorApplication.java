@@ -1,11 +1,13 @@
 package app;
 
+import app.config.WebSocketConfig;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -15,6 +17,7 @@ import java.math.RoundingMode;
  then push trades to another queue
  */
 @SpringBootApplication
+@Import(WebSocketConfig.class)
 public class GeneratorApplication {
 
     public static final String queueName = "spring-boot";

@@ -24,11 +24,11 @@
 				<version>3.5.41</version>
 				<configuration>
 					<enricher>
-						<config>
+						<app.config>
 							<fmp-service>
 								<type>oracle-xe</type>
 							</fmp-service>
-						</config>
+						</app.config>
 					</enricher>
 				</configuration>
 				<executions>
