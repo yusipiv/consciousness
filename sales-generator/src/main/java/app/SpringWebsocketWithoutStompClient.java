@@ -17,12 +17,12 @@ import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.Executors.newSingleThreadScheduledExecutor;
 
 @Service
-public class WebSocketClient {
+public class SpringWebsocketWithoutStompClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringWebsocketWithoutStompClient.class);
 
     @PostConstruct
     public void connect() {
-        try {
+       /* try {
             WebSocketClient webSocketClient = new StandardWebSocketClient();
 
             WebSocketSession webSocketSession = webSocketClient.doHandshake(new TextWebSocketHandler() {
@@ -35,7 +35,7 @@ public class WebSocketClient {
                 public void afterConnectionEstablished(WebSocketSession session) {
                     LOGGER.info("established connection - " + session);
                 }
-            }, new WebSocketHttpHeaders(), URI.create("ws://echo.websocket.org")).get();
+            }, new WebSocketHttpHeaders(), URI.create("ws://localhost:41905/myHandler/")).get();
 
             newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
                 try {
@@ -48,7 +48,7 @@ public class WebSocketClient {
             }, 1, 10, TimeUnit.SECONDS);
         } catch (Exception e) {
             LOGGER.error("Exception while accessing websockets", e);
-        }
+        }*/
     }
 }
 
