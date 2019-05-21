@@ -1,18 +1,19 @@
 import React from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stomp-websocket';
-import ReactTable from 'react-table'
-import 'react-table/react-table.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 class App extends React.Component {
 
+    state = {prices: null};
+    
     constructor(props) {
         super(props);
         this.URL = 'http://localhost:39099/gs-guide-websocket/';
         this.stompClient = null;
         this.socket = null;
-
-        this.data = {};
+        this.prices={};
     }
 
     setConnected (connected) {
@@ -31,11 +32,17 @@ class App extends React.Component {
                 console.log('should rates here:', rates);
 
                 let instrument=`${rates.ccy}/${rates.base_ccy}`;
-                this.data[instrument] = {
+
+
+                this.prices[instrument] = {
                     'instrument': instrument,
                     'buy' : rates.buy,
                     'sale' : rates.sale
                 };
+
+                this.setState({prices:this.prices});
+
+                console.log('-> ',this.state);
             });
         });
     }
@@ -56,22 +63,28 @@ class App extends React.Component {
     }
 
     render() {
-        const columns = [{
-            Header: 'Instrument',
-            accessor: 'instrument'
-        }, {
-            Header: 'Buy',
-            accessor: 'buy'
-
-        }, {
-            Header: 'Sale',
-            accessor: 'sale'
-        }];
-        return <ReactTable
-          data={this.data}
-          columns={columns}
-          resolveData={data=>Object.keys(data).map((k) => data[k])}
-        />
+        return <table className="table rates" >
+            <thead>
+            <tr>
+                <th scope="col" >Instrument</th>
+                <th scope="col" >Buy</th>
+                <th scope="col" >Sale</th>
+            </tr >
+            </thead >
+            <tbody>
+                {
+                    this.state.prices!=null?
+                      Object.keys(this.state.prices).map((k) => {
+                    return <tr>
+                        <td >{this.state.prices[k].instrument}</td>
+                        <td >{this.state.prices[k].buy}</td>
+                        <td >{this.state.prices[k].sale}</td>
+                    </tr>;
+                    })
+                      : "Loading..."
+                }
+            </tbody>
+        </table >;
     }
 }
 
