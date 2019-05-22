@@ -16,10 +16,9 @@ class App extends React.Component {
     this.stompClient = null;
     this.socket = null;
     this.prices = {};
-    this.midValue = {};
   }
 
-  setConnected(connected) {
+  static setConnected(connected) {
     console.log(connected ? 'Socket Connected!' : 'Socket Disconnected!');
   }
 
@@ -27,9 +26,7 @@ class App extends React.Component {
     this.socket = new SockJS(this.URL);
     this.stompClient = Stomp.over(this.socket);
     this.stompClient.connect({}, frame => {
-      this.setConnected(true);
-      console.log('Connected: ' + frame);
-
+      App.setConnected(true);
       this.stompClient.subscribe('/topic/prices', rateValue => {
         let rates = JSON.parse(rateValue.body);
         let instrument = `${rates.ccy}/${rates.base_ccy}`;
@@ -41,11 +38,8 @@ class App extends React.Component {
         this.setState({prices: this.prices});
       });
 
-      this.stompClient.subscribe('/topic/midValue', response => {
-        this.midValue = JSON.parse(response.body);
-          this.setState({midValue: this.midValue});
-        console.log(this.state);
-        }
+      this.stompClient.subscribe('/topic/midValue', response =>
+        this.setState({midValue: JSON.parse(response.body)})
       );
     });
   }
@@ -54,7 +48,7 @@ class App extends React.Component {
     if (this.stompClient !== null) {
       this.stompClient.disconnect();
     }
-    this.setConnected(false);
+    App.setConnected(false);
   }
 
   componentDidMount() {
