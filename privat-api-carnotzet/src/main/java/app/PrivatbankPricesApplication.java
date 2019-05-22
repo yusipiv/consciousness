@@ -1,5 +1,9 @@
 package app;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -16,25 +20,39 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class PrivatbankPricesApplication {
 
-	static final String queueName = "spring-boot";
-
 	public static void main(String[] args) {
 		SpringApplication.run(PrivatbankPricesApplication.class, args);
 	}
 
 	@Bean
-	public Queue queue() {
-		return new Queue(queueName, false);
+	public Queue ratesQueue(@Value("${exchange.rates.queueName}") String queueName) {
+		return new Queue(queueName, true);
 	}
 
 	@Bean
-	public TopicExchange exchange(@Value("${exchange.rates.topicName}") String topicName) {
+	public Queue pricesQueue(@Value("${exchange.prices.queueName}") String queueName) {
+		return new Queue(queueName, true);
+	}
+
+	@Bean
+	public TopicExchange ratesExchange(@Value("${exchange.rates.topicName}") String topicName) {
 		return new TopicExchange(topicName);
 	}
 
 	@Bean
-	public Binding binding(Queue queue, TopicExchange exchange, @Value("${exchange.rates.routingKey}") String routingKey) {
-		return BindingBuilder.bind(queue).to(exchange).with("rates.exchange.#");
+	public TopicExchange pricesExchange(@Value("${exchange.prices.topicName}") String topicName) {
+		return new TopicExchange(topicName);
+	}
+
+	@Bean
+	public List<Binding> binding(Queue ratesQueue, Queue pricesQueue,
+			TopicExchange ratesExchange, @Value("${exchange.rates.routingKey}") String ratesRoutingKey,
+			TopicExchange pricesExchange, @Value("${exchange.prices.routingKey}") String pricesRoutingKey) {
+
+		return Arrays.asList(
+				BindingBuilder.bind(ratesQueue).to(ratesExchange).with(ratesRoutingKey),
+				BindingBuilder.bind(pricesQueue).to(pricesExchange).with(pricesRoutingKey)
+		);
 	}
 
 	@Bean

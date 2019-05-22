@@ -1,0 +1,33 @@
+
+.oi {
+    margin-left: .4rem;
+    position: relative;
+}
+
+.oi.oi-arrow-top{
+   color: green;
+}
+
+.oi.oi-arrow-bottom{
+    color: red;
+}
+
+sup, sub {
+    font-size: 9px;
+    position: absolute;
+}
+
+sup {
+    top: 0;
+}
+sub {
+    bottom: 0;
+}
+
+.oi.oi-arrow-top > sup, .oi.oi-arrow-top > sub {
+    color: green;
+}
+
+.oi.oi-arrow-down > sup, .oi.oi-arrow-down > sub{
+    color: red;
+}

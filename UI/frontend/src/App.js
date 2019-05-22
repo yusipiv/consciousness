@@ -3,89 +3,74 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stomp-websocket';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import Rates from "./Rates";
+import MidPrices from "./MidPrices";
 
 class App extends React.Component {
 
-    state = {prices: null};
-    
-    constructor(props) {
-        super(props);
-        this.URL = 'http://localhost:39099/gs-guide-websocket/';
-        this.stompClient = null;
-        this.socket = null;
-        this.prices={};
-    }
+  state = {prices: null, midValue: null};
 
-    setConnected (connected) {
-        console.log(connected?'Socket Connected!': 'Socket Disconnected!');
-    }
+  constructor(props) {
+    super(props);
+    this.URL = 'http://localhost:39099/gs-guide-websocket/';
+    this.stompClient = null;
+    this.socket = null;
+    this.prices = {};
+    this.midValue = {};
+  }
 
-    connect() {
-        this.socket = new SockJS(this.URL);
-        this.stompClient = Stomp.over(this.socket);
-        this.stompClient.connect({}, frame => {
-            this.setConnected(true);
-            console.log('Connected: ' + frame);
+  setConnected(connected) {
+    console.log(connected ? 'Socket Connected!' : 'Socket Disconnected!');
+  }
 
-            this.stompClient.subscribe('/topic/prices', greeting => {
-                let rates = JSON.parse(greeting.body);
-                console.log('should rates here:', rates);
+  connect() {
+    this.socket = new SockJS(this.URL);
+    this.stompClient = Stomp.over(this.socket);
+    this.stompClient.connect({}, frame => {
+      this.setConnected(true);
+      console.log('Connected: ' + frame);
 
-                let instrument=`${rates.ccy}/${rates.base_ccy}`;
+      this.stompClient.subscribe('/topic/prices', rateValue => {
+        let rates = JSON.parse(rateValue.body);
+        let instrument = `${rates.ccy}/${rates.base_ccy}`;
+        this.prices[instrument] = {
+          'instrument': instrument,
+          'buy': rates.buy,
+          'sale': rates.sale
+        };
+        this.setState({prices: this.prices});
+      });
 
-
-                this.prices[instrument] = {
-                    'instrument': instrument,
-                    'buy' : rates.buy,
-                    'sale' : rates.sale
-                };
-
-                this.setState({prices:this.prices});
-
-                console.log('-> ',this.state);
-            });
-        });
-    }
-
-    disconnect() {
-        if (this.stompClient !== null) {
-            this.stompClient.disconnect();
+      this.stompClient.subscribe('/topic/midValue', response => {
+        this.midValue = JSON.parse(response.body);
+          this.setState({midValue: this.midValue});
+        console.log(this.state);
         }
-        this.setConnected(false);
-    }
+      );
+    });
+  }
 
-    componentDidMount() {
-        this.connect();
+  disconnect() {
+    if (this.stompClient !== null) {
+      this.stompClient.disconnect();
     }
+    this.setConnected(false);
+  }
 
-    componentWillUnmount() {
-        this.disconnect();
-    }
+  componentDidMount() {
+    this.connect();
+  }
 
-    render() {
-        return <table className="table rates" >
-            <thead>
-            <tr>
-                <th scope="col" >Instrument</th>
-                <th scope="col" >Buy</th>
-                <th scope="col" >Sale</th>
-            </tr >
-            </thead >
-            <tbody>
-                {
-                    this.state.prices!=null?
-                      Object.keys(this.state.prices).map((k) => {
-                    return <tr>
-                        <td >{this.state.prices[k].instrument}</td>
-                        <td >{this.state.prices[k].buy}</td>
-                        <td >{this.state.prices[k].sale}</td>
-                    </tr>;
-                    })
-                      : "Loading..."
-                }
-            </tbody>
-        </table >;
-    }
+  componentWillUnmount() {
+    this.disconnect();
+  }
+
+  render() {
+    return <div >
+      <Rates prices={this.state.prices} />
+      <MidPrices prices={this.state.midValue} />
+    </div >;
+  }
 }
 
 export default App;

@@ -20,8 +20,6 @@ import java.math.RoundingMode;
 @Import(WebSocketConfig.class)
 public class GeneratorApplication {
 
-    public static final String queueName = "spring-boot";
-
     public static void main(String[] args) {
         SpringApplication.run(GeneratorApplication.class, args);
     }

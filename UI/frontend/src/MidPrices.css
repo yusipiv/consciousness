@@ -1,17 +1,17 @@
 
-.rates {
-    width: 250px;
+.midPrices {
+    width: 400px;
     position: absolute;
-    right: 30%;
+    left: 10%;
     top: 10%;
     font-size: 13px;
 }
 
-.rates > td, .rates > th {
+.midPrices > td, .midPrices > th {
     padding: .4rem;
     border-color: #c9c9c9;
 }
 
-.rates thead th {
+.midPrices thead th {
     border-color: #c9c9c9;
 }
