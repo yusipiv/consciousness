@@ -25,6 +25,7 @@ class App extends React.Component {
   connect() {
     this.socket = new SockJS(this.URL);
     this.stompClient = Stomp.over(this.socket);
+    this.stompClient.debug = null;
     this.stompClient.connect({}, frame => {
       App.setConnected(true);
       this.stompClient.subscribe('/topic/prices', rateValue => {

@@ -7,8 +7,6 @@ class MidPrices extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('-->', props)
-    //{"rate":7547.6914,"growthAbsolute":0.0000,"growthPercent":0}
   }
 
   render() {
@@ -23,7 +21,7 @@ class MidPrices extends React.Component {
       <tbody >
       {
         this.props.prices != null ?
-          Object.keys(this.props.prices).map((key) => {
+          Object.keys(this.props.prices).map(key => {
             return <tr >
               <td >{key}</td >
               <td ><Arrow value={this.props.prices[key].ask}/></td >
