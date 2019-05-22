@@ -1,4 +1,17 @@
 
 .rates{
-    width: 350px;
+    width: 250px;
+    position: absolute;
+    right: 30%;
+    top: 10%;
+    font-size: 13px;
+}
+
+.rates > td, .rates > th{
+    padding: .4rem;
+    border-color: #c9c9c9;
+}
+
+.rates thead th {
+    border-color: #c9c9c9;
 }
