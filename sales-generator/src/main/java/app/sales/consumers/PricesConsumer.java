@@ -17,7 +17,6 @@ import com.consciousness.me.Rate;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import app.GeneratorApplication;
 
 @EnableRabbit
 @Component

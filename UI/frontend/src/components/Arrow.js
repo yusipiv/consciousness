@@ -11,6 +11,11 @@ class Arrow extends React.Component {
       minimumFractionDigits: 4,
       maximumFractionDigits: 4
     });
+    this.percentFormatter = new Intl.NumberFormat('en-US', {
+      style: 'percent',
+      minimumFractionDigits: 4,
+      maximumFractionDigits: 4
+    });
 
   }
 
@@ -20,7 +25,7 @@ class Arrow extends React.Component {
         <span> {this.formatter.format(this.props.value.rate)} </span>
         {this.props.value.growthAbsolute !== 0 ?
             <span className={this.props.value.growthAbsolute > 0 ? 'oi oi-arrow-top' : 'oi oi-arrow-bottom'}>
-              <sup>{this.formatter.format(this.props.value.growthPercent > 0? '+' + this.props.value.growthPercent : this.props.value.growthPercent)}%</sup>
+              <sup>{this.percentFormatter.format(this.props.value.growthPercent > 0? '+' + this.props.value.growthPercent : this.props.value.growthPercent)}</sup>
               <sub>{this.formatter.format(this.props.value.growthAbsolute > 0? '+' + this.props.value.growthAbsolute : this.props.value.growthAbsolute)}</sub>
             </span>
           : ''

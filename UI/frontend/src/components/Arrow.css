@@ -4,11 +4,11 @@
     position: relative;
 }
 
-.oi.oi-arrow-top{
-   color: green;
+.oi.oi-arrow-top {
+    color: green;
 }
 
-.oi.oi-arrow-bottom{
+.oi.oi-arrow-bottom {
     color: red;
 }
 
@@ -20,6 +20,7 @@ sup, sub {
 sup {
     top: 0;
 }
+
 sub {
     bottom: 0;
 }
@@ -28,6 +29,6 @@ sub {
     color: green;
 }
 
-.oi.oi-arrow-down > sup, .oi.oi-arrow-down > sub{
+.oi.oi-arrow-down > sup, .oi.oi-arrow-down > sub {
     color: red;
 }
