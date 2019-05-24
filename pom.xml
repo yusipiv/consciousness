@@ -46,15 +46,23 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>com.github.swissquote</groupId>
+				<artifactId>zet-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 
 	<modules>
 		<module>rabbitmq-carnotzet</module>
 		<module>sales-generator</module>
-		<module>privat-app-carnotzet</module>
+		<module>privat-app</module>
 		<module>api</module>
 		<module>db-carnotzet</module>
 		<module>UI</module>
+		<module>app</module>
 	</modules>
 
 </project>

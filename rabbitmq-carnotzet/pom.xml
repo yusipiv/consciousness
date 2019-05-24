@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<rabbitmq.version>3.7.14</rabbitmq.version>
+		<rabbitmq.version>3-management</rabbitmq.version>
 	</properties>
 
 	<artifactId>rabbitmq-carnotzet</artifactId>

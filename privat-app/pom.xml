@@ -11,9 +11,9 @@
 	</parent>
 
 	<groupId>com.consciousness.me</groupId>
-	<artifactId>privat-app-carnotzet</artifactId>
+	<artifactId>privat-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>app</name>
+	<name>privat-app</name>
 	<description>Demo project</description>
 
 	<properties>
@@ -28,18 +28,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectreactor</groupId>
 			<artifactId>reactor-spring</artifactId>
 			<version>1.0.1.RELEASE</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -52,7 +53,6 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -60,12 +60,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>com.github.swissquote</groupId>
-				<artifactId>zet-maven-plugin</artifactId>
-				<version>${zet-maven-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>
