@@ -51,7 +51,7 @@
 	<modules>
 		<module>rabbitmq-carnotzet</module>
 		<module>sales-generator</module>
-		<module>privat-api-carnotzet</module>
+		<module>privat-app-carnotzet</module>
 		<module>api</module>
 		<module>db-carnotzet</module>
 		<module>UI</module>
