@@ -54,7 +54,6 @@
 		<module>privat-api-carnotzet</module>
 		<module>api</module>
 		<module>db-carnotzet</module>
-		<module>history-carnotzet</module>
 		<module>UI</module>
 	</modules>
 
