@@ -18,7 +18,7 @@
 		<zet-maven-plugin.version>1.7.9</zet-maven-plugin.version>
 		<dockerfile-maven-plugin.version>1.2.0</dockerfile-maven-plugin.version>
 
-		<jackson.version>2.9.8</jackson.version>
+		<jackson.version>2.10.1</jackson.version>
 	</properties>
 
 	<dependencies>
